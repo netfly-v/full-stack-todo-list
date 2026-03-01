@@ -1,0 +1,154 @@
+ .admin-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.admin-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: #ffffff;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.06);
+}
+
+.admin-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.admin-subtitle {
+  margin: 0.35rem 0 0;
+  color: #667085;
+}
+
+.admin-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.admin-badge {
+  padding: 0.25rem 0.6rem;
+  background: #f0f4ff;
+  color: #2c4aa3;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.admin-email {
+  color: #475467;
+  font-size: 0.9rem;
+}
+
+.admin-card {
+  background: #ffffff;
+  border: 1px solid #e6eaf0;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
+}
+
+.admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.admin-card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.admin-count {
+  color: #475467;
+  font-weight: 600;
+}
+
+.admin-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.admin-table thead th {
+  text-align: left;
+  padding: 0.75rem 0.5rem;
+  background: #f8fafc;
+  color: #344054;
+  font-weight: 600;
+  border-bottom: 1px solid #e6eaf0;
+}
+
+.admin-table tbody td {
+  padding: 0.7rem 0.5rem;
+  border-bottom: 1px solid #f0f2f5;
+  color: #1f2937;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background: #fbfdff;
+}
+
+.status-pill,
+.role-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-active {
+  background: #ecfdf3;
+  color: #027a48;
+}
+
+.status-done {
+  background: #f2f4f7;
+  color: #667085;
+}
+
+.role-user {
+  background: #f2f4f7;
+  color: #475467;
+}
+
+.role-admin {
+  background: #fff4e5;
+  color: #b54708;
+}
+
+.role-superadmin {
+  background: #fbe8ff;
+  color: #7a2e8a;
+}
+
+.admin-table select {
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #d0d5dd;
+  background: #ffffff;
+  font-size: 0.9rem;
+}
+
+.admin-hint {
+  margin-left: 0.5rem;
+  color: #98a2b3;
+  font-size: 0.8rem;
+}
+
+.admin-note {
+  margin-top: 0.75rem;
+  color: #667085;
+  font-size: 0.9rem;
+}

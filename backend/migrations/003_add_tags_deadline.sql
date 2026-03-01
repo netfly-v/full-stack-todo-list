@@ -1,0 +1,5 @@
+ALTER TABLE todos
+  ADD COLUMN IF NOT EXISTS tags TEXT[] NOT NULL DEFAULT '{}',
+  ADD COLUMN IF NOT EXISTS deadline TIMESTAMPTZ;
+
+CREATE INDEX IF NOT EXISTS idx_todos_deadline ON todos (deadline);

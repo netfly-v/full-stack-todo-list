@@ -1,0 +1,16 @@
+{
+  "name": "fullstack-todo-app",
+  "version": "1.0.0",
+  "description": "Full-stack monorepo: React + TypeScript + React Query + Express.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:docker": "docker compose up -d postgres backend && npm run dev:frontend",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "migrate": "cd backend && npm run migrate"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
