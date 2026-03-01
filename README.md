@@ -10,6 +10,14 @@ A full-stack pet project built to learn backend development in practice: cookie-
 - Swagger UI: `https://full-stack-todo-list-53in.onrender.com/api/docs/`
 - Neon dashboard: `https://console.neon.tech/`
 
+## Demo Credentials
+
+- Email: `admin@todolist.com`
+- Password: `Qwerty123`
+- Role: `superadmin`
+
+Use the production frontend domain above (`...amber.vercel.app`) for testing.
+
 ## Repository Structure
 
 - `frontend` — React + TypeScript + Vite + React Query
