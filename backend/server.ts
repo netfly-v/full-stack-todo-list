@@ -54,6 +54,11 @@ app.get('/', (_req, res) => {
   res.json({ message: 'Todo API is running!' });
 });
 
+// Render default health endpoint
+app.get('/healthz', (_req, res) => {
+  res.status(200).json({ ok: true });
+});
+
 const startServer = async () => {
   try {
     await runMigrations();
