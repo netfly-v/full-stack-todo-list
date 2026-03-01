@@ -21,6 +21,8 @@ export const useMe = () => {
       }
     },
     retry: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
   });
 };
 

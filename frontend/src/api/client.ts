@@ -16,9 +16,12 @@ const refreshApi = axios.create({
   },
 });
 
+let refreshPromise: Promise<void> | null = null;
+
 const shouldSkipRefresh = (config?: InternalAxiosRequestConfig) => {
   const url = config?.url ?? '';
   return (
+    url.includes('/auth/me') ||
     url.includes('/auth/login') ||
     url.includes('/auth/register') ||
     url.includes('/auth/logout') ||
@@ -42,10 +45,16 @@ api.interceptors.response.use(
     originalRequest._retry = true;
 
     try {
-      await refreshApi.post('/auth/refresh');
+      if (!refreshPromise) {
+        refreshPromise = refreshApi.post('/auth/refresh').then(() => undefined);
+      }
+
+      await refreshPromise;
       return api(originalRequest);
     } catch (refreshError) {
       return Promise.reject(refreshError);
+    } finally {
+      refreshPromise = null;
     }
   }
 );
