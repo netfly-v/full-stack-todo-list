@@ -41,6 +41,16 @@ export const useLogin = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (credentials: AuthCredentials) => authApi.login(credentials),
+    retry: (failureCount, error) => {
+      if (!axios.isAxiosError(error)) {
+        return false;
+      }
+
+      const status = error.response?.status;
+      // Free-tier backend can wake up slowly; retry transient server errors once.
+      return Boolean(status && status >= 500 && failureCount < 1);
+    },
+    retryDelay: 2000,
     onSuccess: user => {
       queryClient.setQueryData(authKeys.me, user);
       queryClient.removeQueries({ queryKey: ['todos'] });

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import axios from 'axios';
 import { useLogin, useLogout, useMe, useRegister } from '../hooks/useAuth';
 import './AuthPanel.css';
 
@@ -36,10 +37,25 @@ const AuthPanel = () => {
   });
 
   const isSubmitting = login.isPending || register.isPending;
-  const errorMessage =
-    (login.error instanceof Error && login.error.message) ||
-    (register.error instanceof Error && register.error.message) ||
-    '';
+  const getErrorMessage = () => {
+    const loginError = login.error;
+    if (axios.isAxiosError(loginError) && loginError.response?.status === 500) {
+      return 'Server is waking up. Please retry in a few seconds.';
+    }
+
+    if (loginError instanceof Error) {
+      return loginError.message;
+    }
+
+    const registerError = register.error;
+    if (registerError instanceof Error) {
+      return registerError.message;
+    }
+
+    return '';
+  };
+
+  const errorMessage = getErrorMessage();
 
   const onSubmit = (payload: { email: string; password: string }) => {
     if (mode === 'login') {
