@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "$BACKEND_URL/api/:path*"
+      "destination": "https://full-stack-todo-list-53in.onrender.com/api/:path*"
     },
     {
       "source": "/uploads/:path*",
-      "destination": "$BACKEND_URL/uploads/:path*"
+      "destination": "https://full-stack-todo-list-53in.onrender.com/uploads/:path*"
     }
   ]
 }
