@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch server.ts",
     "build": "tsc",
-    "start": "node --experimental-specifier-resolution=node dist/server.js",
+    "start": "tsx server.ts",
     "migrate": "tsx migrate.ts",
     "test": "jest",
     "test:watch": "jest --watch",
