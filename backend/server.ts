@@ -16,15 +16,32 @@ const app = express();
 const PORT = Number(process.env.PORT ?? 3001);
 
 // Middleware - functions that run before your route handlers
+const normalizeOrigin = (origin: string) => origin.trim().replace(/\/+$/, '');
+
 const allowedOrigins = (process.env.FRONTEND_URL ?? 'http://localhost:3002')
   .split(',')
-  .map(origin => origin.trim())
+  .map(normalizeOrigin)
   .filter(Boolean);
+
+const isAllowedOrigin = (origin: string) => {
+  const normalizedOrigin = normalizeOrigin(origin);
+  if (allowedOrigins.includes(normalizedOrigin)) {
+    return true;
+  }
+
+  // Allow Vercel production/preview domains (HTTPS only).
+  try {
+    const parsed = new URL(normalizedOrigin);
+    return parsed.protocol === 'https:' && parsed.hostname.endsWith('.vercel.app');
+  } catch {
+    return false;
+  }
+};
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin || isAllowedOrigin(origin)) {
         return callback(null, true);
       }
 
